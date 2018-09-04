@@ -1,0 +1,698 @@
+/* animation image */
+
+body {
+    padding: 50px;
+}
+
+h1, h3 {
+    text-align: center;
+    color: #565656;
+}
+
+#container {
+    width: 100%;
+    height: 250px;
+    background-color: #EEE;
+    text-align: center;
+}
+
+#hexagon {
+    animation-name: bobble;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bobble {
+    0% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(40px);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+/*Transition image*/
+
+#container2 {
+    width: 100%;
+    height: 290px;
+    background-color: #EEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container2 #hexagon2:hover {
+    transform: scale3d(1.2, 1.2, 1) rotate(45deg);
+}
+
+#container2 #hexagon2 {
+    transition-property: transform;
+    transition-duration: .1s;
+}
+
+/* Timing functions */
+
+#container3 .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 30px;
+    animation: slide 5s infinite;
+}
+
+#container3 #circle1 {
+    animation-timing-function: ease-in-out;
+    background-color: #E84855;
+}
+
+#container3 #circle2 {
+    animation-timing-function: linear;
+    background-color: #0099FF;
+}
+
+#container3 #circle3 {
+    animation-timing-function: cubic-bezier(0, 1, .76, 1.14);
+    background-color: #FFCC00;
+}
+
+#container3 #circle4 {
+    animation-timing-function: steps(5, start);
+    background-color: #13cc13;
+}
+
+#container3 {
+    width: 550px;
+    background-color: #FFF;
+    border: 3px #CCC dashed;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0 auto;
+}
+
+@keyframes slide {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    25% {
+        transform: translate3d(380px, 0, 0);
+    }
+    50% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/*Optimization
+El navegador tarda aproximadamente 100ms en ejecutar una acción
+Los dispositivo moviles son mas propensos a ralentizaciones por animaciones
+las propiedades css transform, opacity y filter son ejecutadas en la gpu
+tratar de minimizar la cantidad de elemento con estas propiedades que no vamos a animar
+will-change: transform, opacity;, nos permite especificar que elementos queremos que se animen, no funciona ni en edge ni en IE
+*/
+
+#container5 {
+    width: 75%;
+    height: 290px;
+    cursor: pointer;
+    box-shadow: 0px 0px 15px #CCC;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: yellow;
+    transition: background-color .2s ease-out;
+}
+
+/* Links animations
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+*/
+
+#container6 {
+    background-color: #EEE;
+    padding: 30px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+#container6 ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+#container6 li {
+    color: #0066FF;
+    list-style: none;
+    font-size: 20px;
+}
+
+#container6 li:nth-child(1) a:hover {
+    text-decoration: underline;
+}
+
+#container6 li:nth-child(1) a {
+    text-decoration: none;
+    color: #0066FF;
+    transition: all .2s ease-out;
+}
+
+#container6 li:nth-child(2) a:hover {
+    transition: all .2s ease-out;
+    border-bottom: 4px solid #0066FF;
+}
+
+#container6 li:nth-child(2) a {
+    color: #0066FF;
+    text-decoration: none;
+    transition: all .2s ease-out;
+}
+
+#container6 li:nth-child(3) a:hover {
+    border-bottom: 4px solid rgba(0, 102, 255, 1);
+}
+
+#container6 li:nth-child(3) a {
+    color: #0066FF;
+    text-decoration: none;
+    border-bottom: 4px solid rgba(0, 102, 255, 0);
+    transition: all .2s ease-out;
+}
+
+#container6 li:nth-child(4) a:hover {
+    background-position: 0 100%;
+}
+
+#container6 li:nth-child(4) a {
+    color: #0066FF;
+    text-decoration: none;
+    transition: all .2s ease-out;
+    padding: 3px;
+    background: linear-gradient(to bottom, rgba(181, 225, 255, 0) 0%, rgba(181, 225, 255, 0) 50%, rgba(181, 225, 255, 1) 50%, rgba(181, 225, 255, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 200%;
+}
+
+/*Simple Text Fade and Scale Animation*/
+
+#container7 {
+    text-align: center;
+    background-color: #82C1FF;
+    width: 600px;
+    height: 300px;
+    margin: 100px auto;
+    border-radius: 5px;
+}
+
+#container7 h1 {
+    font-size: 88px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #FFF;
+    margin: 0;
+    padding: 90px 0 25px 0;
+    transform-origin: 50% 100%;
+    text-shadow: 2px 2px 2px #333;
+    animation-duration: .3s;
+    animation-name: fadeAndScale;
+    animation-timing-function: cubic-bezier(.71, .55, .62, 1.57);
+}
+
+#container7 a {
+    font-family: Cambria, Cochin, serif;
+    font-size: 16px;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #A6D2FF;
+    transition: background-color .2s ease-out;
+}
+
+#container7 a:hover {
+    background-color: #EEE;
+}
+
+@keyframes fadeAndScale {
+    from {
+        opacity: 0;
+        transform: scale(.9, .9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+/* Creating a Smooth Sliding Menu */
+
+#container8 {
+    display: flex;
+}
+
+#container8 #container li {
+    margin-bottom: 10px;
+}
+
+#container8 #roundButton {
+    background-color: #96D9FF;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 10px solid #0065A6;
+    outline: none;
+    transition: all .2s cubic-bezier(0, 1.26, .8, 1.28);
+    margin: 0 auto;
+}
+
+#container8 #roundButton:hover {
+    background-color: #96D9FF;
+    cursor: pointer;
+    border-color: #003557;
+    transform: scale(1.2, 1.2);
+}
+
+#container8 #roundButton:active {
+    border-color: #003557;
+    background-color: #FFF;
+}
+
+#container8 #flyoutMenu {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFE600;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(-100vw, 0, 0);
+    transition: transform .3s cubic-bezier(0, .52, 0, 1);
+    overflow: auto;
+    z-index: 1000;
+}
+
+#container8 #flyoutMenu.show {
+    transform: translate3d(0vw, 0, 0);
+}
+
+#container8 #flyoutMenu h2 a {
+    color: #333;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+#container8 #flyoutMenu h2 a:hover {
+    text-decoration: underline;
+}
+
+/* scroll animations */
+
+#container9 {
+    background-color: #FDE74C;
+    transition: all 1s ease-in;
+    padding: 50px;
+    color: #111;
+    font-family: sans-serif;
+    line-height: 32px;
+    font-size: 18px;
+    margin-top: 100px;
+}
+
+#container9 h1 {
+    font-family: sans-serif;
+}
+
+#container9.colorOne {
+    background-color: #9BC53D;
+    color: #000;
+}
+
+#container9.colorTwo {
+    background-color: #FFF;
+    color: #000;
+}
+
+#container9 #mainContent {
+    width: 420px;
+    margin: 0 auto;
+}
+
+#container9 #mainContent p {
+    padding: 20px;
+}
+
+#container9 #mainContent #firstBox {
+    font-weight: bold;
+    transform: translate3d(-30px, 0, 0);
+    transition: all .5s ease-out;
+    opacity: 0;
+}
+
+#container9 #mainContent #firstBox.active {
+    background-color: #333;
+    color: #FFF;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+#container9 #mainContent #secondBox {
+    transition: all .2s ease-in-out;
+    transform: translate3d(0, 30px, 0);
+    opacity: 0;
+}
+
+#container9 #mainContent #secondBox.active {
+    background-color: #1581AF;
+    color: #FFF;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+#container9 #mainContent ol li {
+    padding-left: 7px;
+    margin-bottom: 15px;
+    transition: all .2s ease-in-out;
+    transform: translate3d(20px, 0, 0);
+    opacity: 0;
+}
+
+#container9 #mainContent ol li.active {
+    transform: translate3d(0px, 0, 0);
+    opacity: 1;
+}
+
+/* Ipad iphone effects */
+
+#container10 {
+    background-color: #EFEFEF;
+    padding: 25px;
+}
+
+#container10 #main {
+    width: 450px;
+    margin: 0 auto;
+}
+
+#container10 #main .icon {
+    padding: 20px;
+    border-radius: 40px;
+}
+
+#container10 #main .icon:nth-child(2n) {
+    animation-name: keyframes1;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 10%;
+}
+
+#container10 #main .icon:nth-child(2n-1) {
+    animation-name: keyframes2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform-origin: 30% 5%;
+}
+
+@keyframes keyframes1 {
+    0% {
+        transform: rotate(-1deg);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: rotate(1.5deg);
+        animation-timing-function: ease-out;
+    }
+}
+
+@keyframes keyframes2 {
+    0% {
+        transform: rotate(1deg);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: rotate(-1.5deg);
+        animation-timing-function: ease-out;
+    }
+}
+
+/* parallax animations */
+
+#container11 {
+    position: relative;
+}
+
+#container11 #content {
+    padding: 50px;
+    margin: 40px;
+    background-color: rgba(255, 255, 255, .48);
+    text-align: center;
+}
+
+#container11 #content p {
+    font-family: Helvetica, sans-serif;
+    font-size: 28px;
+    line-height: 40px;
+    color: #111;
+}
+
+#container11 h1 {
+    text-transform: capitalize;
+    font-family: sans-serif;
+    font-size: 40px;
+    padding: 10px;
+    margin: 40px;
+    background-color: rgba(20, 20, 20, .8);
+    color: #FFF;
+}
+
+#container11 #bigYellowCircle {
+    background-image: url("http://bit.ly/yellowCircle");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 90%;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: .75;
+}
+
+#container11 #blueSquare {
+    background-image: url("http://bit.ly/blueSquare");
+    background-repeat: no-repeat;
+    background-position: 97% bottom;
+    background-size: 10%;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    opacity: .75;
+}
+
+#container11 #greenPentagon {
+    background-image: url("http://bit.ly/greenPentagon");
+    background-repeat: no-repeat;
+    background-position: 5% top;
+    background-size: 50%;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+    opacity: .75;
+}
+
+/* sprite */
+
+#spriteContainer {
+    width: 300px;
+    height: 300px;
+    display: block;
+    background-image: url("sprites_final.png");
+    animation: sprite .3s steps(24) infinite;
+    margin: 0 auto;
+}
+
+@keyframes sprite {
+    100% {
+        background-position: -7224px;
+    }
+}
+
+/* slider */
+
+#container12 {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#container12 #contentContainer {
+    width: 550px;
+    height: 350px;
+    border: 5px black solid;
+    overflow: hidden;
+}
+
+#container12 #wrapper {
+    width: 2200px;
+    position: relative;
+    left: 0px;
+    transition: left .5s ease-in-out;
+}
+
+#container12 .content {
+    float: left;
+    height: 350px;
+    white-space: normal;
+    width: 550px;
+    text-align: center;
+    padding-top: 70px;
+}
+
+#container12 .content p {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    opacity: .3;
+    font-size: 144px;
+    margin: 0;
+}
+
+#container12 #itemOne {
+    background-color: #0099CC;
+    background-image: url("blueSquare.png");
+}
+
+#container12 #itemTwo {
+    background-color: #FFCC00;
+    background-image: url("yellowSquare.png");
+}
+
+#container12 #itemThree {
+    background-color: #FF6666;
+    background-image: url("pinkSquare.png");
+}
+
+#container12 #itemFour {
+    background-color: #E8E8E8;
+    background-image: url("graySquare.png");
+}
+
+#container12 #navLinks {
+    text-align: center;
+    width: 550px;
+}
+
+#container12 #navLinks ul {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+#container12 #navLinks ul li {
+    float: left;
+    text-align: center;
+    margin: 10px;
+    list-style: none;
+    cursor: pointer;
+    background-color: #CCCCCC;
+    padding: 5px;
+    border-radius: 50%;
+    border: black 5px solid;
+}
+
+#container12 #navLinks ul li:hover {
+    background-color: #FFFF00;
+}
+
+#container12 #navLinks ul li.active {
+    background-color: #333333;
+    color: #FFFFFF;
+    outline-width: 7px;
+}
+
+#container12 #navLinks ul li.active:hover {
+    background-color: #484848;
+    color: #FFFFFF;
+}
+
+/* 3D animation */
+
+#container13{
+    width: 125px;
+    margin: 52px auto;
+}
+
+@keyframes spincube {
+    from, to {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    16% {
+        transform: rotateY(-90deg);
+    }
+    33% {
+        transform: rotateY(-90deg) rotateZ(90deg);
+    }
+    50% {
+        transform: rotateY(-180deg) rotateZ(90deg);
+    }
+    66% {
+        transform: rotateY(-270deg) rotateX(90deg);
+    }
+    83% {
+        transform: rotateX(90deg);
+    }
+}
+
+#container13 .cubespinner {
+
+    animation-name: spincube;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 12s;
+    transform-style: preserve-3d;
+    transform-origin: 60px 60px 0
+}
+
+#container13 .cubespinner div {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, .8);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, .2);
+    text-align: center;
+    font-size: 100px
+}
+
+#container13 .cubespinner .face1 {
+    transform: translateZ(60px)
+}
+
+#container13 .cubespinner .face2 {
+    transform: rotateY(90deg) translateZ(60px)
+}
+
+#container13 .cubespinner .face3 {
+    transform: rotateY(90deg) rotateX(90deg) translateZ(60px)
+}
+
+#container13 .cubespinner .face4 {
+    transform: rotateY(180deg) rotateZ(90deg) translateZ(60px)
+}
+
+#container13 .cubespinner .face5 {
+    transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px)
+}
+
+#container13 .cubespinner .face6 {
+    transform: rotateX(-90deg) translateZ(60px)
+}
+
+/* https://codepen.io/Zeaklous/pen/dIomg */
+
+/* https://codepen.io/Zeaklous/pen/dirzc */
+
+/* https://codepen.io/Zeaklous/pen/pcfCJ */
